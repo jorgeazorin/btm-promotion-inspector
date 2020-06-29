@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "53b5c47de9fb3c884094b2db20c94508",
+    "revision": "966d83f0f65ac43eb11931c6133e0cf0",
     "url": "/btm-promotion-inspector/index.html"
   },
   {
-    "revision": "10abfce5c21b608900b5",
-    "url": "/btm-promotion-inspector/static/css/main.8b32e31b.chunk.css"
+    "revision": "b1dffc7ad69c62124cb6",
+    "url": "/btm-promotion-inspector/static/css/main.34892fcc.chunk.css"
   },
   {
     "revision": "c814e7b8ee913172b74e",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/btm-promotion-inspector/static/js/2.e4e52de9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "10abfce5c21b608900b5",
+    "revision": "b1dffc7ad69c62124cb6",
     "url": "/btm-promotion-inspector/static/js/main.972603a7.chunk.js"
   },
   {
