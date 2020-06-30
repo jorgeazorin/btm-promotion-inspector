@@ -1,3 +1,4 @@
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -12,20 +13,56 @@ moment().locale('es')
 class PromoRow extends React.Component{
   constructor(props) { 
     super(props); 
-    this.state = { config:{settings:{env:{}}} }; 
+    this.state = { config:{settings:{env:{}}}, jira:{fields:{}, key: null} }; 
     
   } 
 
   componentDidMount() {
     let url = server + this.props.promo.url.replace("index.html","");
     fetch(url+"config.json").then(response=>response.json()).then(json => {this.setState({config: json})});
+
+
+
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.username != this.props.username || prevProps.password != this.props.password){
+        let headers = new Headers();
+        headers.set('Authorization', 'Basic ' + Buffer.from( this.props.username + ":" + this.props.password).toString('base64'));
+
+
+        fetch("https://jira.gamesys.co.uk/rest/api/latest/search?jql=\"Path (URL) of the promotion\" ~ "+ this.props.promo.path, {method:'GET', headers: headers})
+        .then(response=>response.json())
+          .then(json => {
+            if(json && json.issues && json.issues[0]){
+              this.setState({jira: json.issues.find(j=>j.fields.customfield_12471 && j.fields.customfield_12471.trim()==this.props.promo.path.trim())})
+              //this.setState({jira:  json.issues[0]});
+            }
+          });
+      }
+  }
 
   render(){
     return (
       <tbody>
         <tr>
+          <td>
+            <a href={'https://jira.gamesys.co.uk/browse/'+this.state.jira.key}>
+              {this.state.jira.key}
+            </a>
+          </td>
+          <td>
+            {this.state.jira.fields && this.state.jira.key?
+                moment(this.state.jira.fields.customfield_12274,"YYYY-MM-DD").isSame(moment(this.props.promo.startDate,"DD/MM/YYYY"))?'':'❌FI('+this.state.jira.fields.customfield_12274+')  '
+              :''}
+            {this.state.jira.fields && this.state.jira.key?
+                moment(this.state.jira.fields.customfield_12470,"YYYY-MM-DD").isSame(moment(this.props.promo.expiryDate,"DD/MM/YYYY").subtract(1,"days"))?'':'❌FF ('+this.state.jira.fields.customfield_12470+')  '
+              :''}
+
+            {(this.state.jira.fields && this.state.jira.key && this.state.config.settings.env.prod)?
+               this.state.config.settings.env.prod.promoID==this.state.jira.fields.customfield_12382?'':'❌ID('+this.state.jira.fields.customfield_12382+') '
+              :''}
+          </td>
           <td>
             {this.props.next?
               moment(this.props.next.startDate,"DD/MM/YYYY")< moment() && moment(this.props.next.expiryDate,"DD/MM/YYYY")> moment()?'🔥️':
@@ -82,15 +119,34 @@ class App extends React.Component {
       fetch(server+promoPageLink).then(response=>response.json()).then(json => this.setState({promos: json}));
   }
 
+  buscarJiras =()=>{
+
+    let headers = new Headers();
+    headers.set('Authorization', 'Basic ' + Buffer.from(  document.getElementById('username').value + ":" + document.getElementById('password').value).toString('base64'));
+    fetch("https://jira.gamesys.co.uk/rest/api/latest/mypermissions", {method:'GET', headers: headers}).then(
+      response=>{
+        if(response.ok)
+          this.setState({username: document.getElementById('username').value , password:document.getElementById('password').value})
+      }
+    )
+  }
   render() { 
         
     return (
       <div className="App">
         <div className="App-header">
           <h2>BTM Promotions</h2>
+          <div>
+            <input placeholder="Jira username" type="text" id="username"></input>
+            <input placeholder="Jira password" type="password" id="password"></input>
+            <button onClick={this.buscarJiras}>Buscar Jiras</button>
+          </div>
+          <br></br>
           <table>
             <thead>
               <tr>
+                <th>Jira</th>
+                <th>Jira Errors</th>
                 <th>Próximamente</th>
                 <th>Title</th>
                 <th>ID</th>
@@ -106,9 +162,10 @@ class App extends React.Component {
               (this.state.promos.categories)?
               this.state.promos.categories[0].promotions.map(
                 (v, index)=>{
-                  return <PromoRow key={index}  promo={v} next={this.state.promos.categories[1].promotions.find(f=> f.path == v.path)} ></PromoRow>
+                  return <PromoRow key={index} username={this.state.username} password={this.state.password}  promo={v} next={this.state.promos.categories[1].promotions.find(f=> f.path == v.path)} ></PromoRow>
                 } 
               ):null
+              
             }
           </table>
         </div>
@@ -118,3 +175,5 @@ class App extends React.Component {
 } 
 
 export default App;
+
+   
