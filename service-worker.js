@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/btm-promotion-inspector/precache-manifest.2996ec01b230beb1783cfe85f845e624.js"
+  "/btm-promotion-inspector/precache-manifest.2cbf54ac87863289f9470256890c83a3.js"
 );
 
 self.addEventListener('message', (event) => {
