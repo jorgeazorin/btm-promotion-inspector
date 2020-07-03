@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3772dd38d40a61a82e76d7f4ddcb58be",
+    "revision": "5d1c19f8abf478a5694508c784c0a7a3",
     "url": "/btm-promotion-inspector/index.html"
   },
   {
-    "revision": "3c34d0f9abd18f61166b",
-    "url": "/btm-promotion-inspector/static/css/main.34892fcc.chunk.css"
+    "revision": "a9c9f7fa21b80af5b9a1",
+    "url": "/btm-promotion-inspector/static/css/main.fc56ff1b.chunk.css"
   },
   {
-    "revision": "2c25ddd5132be17b2cab",
-    "url": "/btm-promotion-inspector/static/js/2.d66dcfe5.chunk.js"
+    "revision": "6106b1fe9e5706625705",
+    "url": "/btm-promotion-inspector/static/js/2.853a2f2e.chunk.js"
   },
   {
     "revision": "e8b0ae1bd2f59a85f300b3c60c50941a",
-    "url": "/btm-promotion-inspector/static/js/2.d66dcfe5.chunk.js.LICENSE.txt"
+    "url": "/btm-promotion-inspector/static/js/2.853a2f2e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3c34d0f9abd18f61166b",
-    "url": "/btm-promotion-inspector/static/js/main.a81916d2.chunk.js"
+    "revision": "a9c9f7fa21b80af5b9a1",
+    "url": "/btm-promotion-inspector/static/js/main.5a584168.chunk.js"
   },
   {
     "revision": "628409305a323569728f",
