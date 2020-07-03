@@ -37,7 +37,9 @@ class PromoRow extends React.Component{
         .then(response=>response.json())
           .then(json => {
             if(json && json.issues && json.issues[0]){
-              this.setState({jira: json.issues.find(j=>j.fields.customfield_12471 && j.fields.customfield_12471.trim()==this.props.promo.path.trim())})
+              let Fjira = json.issues.find(j=>j.fields.customfield_12471 && j.fields.customfield_12471.trim()==this.props.promo.path.trim());
+              if(Fjira)
+                this.setState({jira: Fjira});
               //this.setState({jira:  json.issues[0]});
             }
           });
