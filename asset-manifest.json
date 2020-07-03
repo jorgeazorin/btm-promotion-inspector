@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/btm-promotion-inspector/static/css/main.fc56ff1b.chunk.css",
-    "main.js": "/btm-promotion-inspector/static/js/main.5a584168.chunk.js",
-    "main.js.map": "/btm-promotion-inspector/static/js/main.5a584168.chunk.js.map",
+    "main.js": "/btm-promotion-inspector/static/js/main.c11f6bc2.chunk.js",
+    "main.js.map": "/btm-promotion-inspector/static/js/main.c11f6bc2.chunk.js.map",
     "runtime-main.js": "/btm-promotion-inspector/static/js/runtime-main.4c44975e.js",
     "runtime-main.js.map": "/btm-promotion-inspector/static/js/runtime-main.4c44975e.js.map",
     "static/js/2.853a2f2e.chunk.js": "/btm-promotion-inspector/static/js/2.853a2f2e.chunk.js",
     "static/js/2.853a2f2e.chunk.js.map": "/btm-promotion-inspector/static/js/2.853a2f2e.chunk.js.map",
     "index.html": "/btm-promotion-inspector/index.html",
-    "precache-manifest.9c403ba8be6d93cc68be13207dda7c80.js": "/btm-promotion-inspector/precache-manifest.9c403ba8be6d93cc68be13207dda7c80.js",
+    "precache-manifest.6d4012fb5a585451697777c19df67131.js": "/btm-promotion-inspector/precache-manifest.6d4012fb5a585451697777c19df67131.js",
     "service-worker.js": "/btm-promotion-inspector/service-worker.js",
     "static/css/main.fc56ff1b.chunk.css.map": "/btm-promotion-inspector/static/css/main.fc56ff1b.chunk.css.map",
     "static/js/2.853a2f2e.chunk.js.LICENSE.txt": "/btm-promotion-inspector/static/js/2.853a2f2e.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.4c44975e.js",
     "static/js/2.853a2f2e.chunk.js",
     "static/css/main.fc56ff1b.chunk.css",
-    "static/js/main.5a584168.chunk.js"
+    "static/js/main.c11f6bc2.chunk.js"
   ]
 }
